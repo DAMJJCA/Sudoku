@@ -23,7 +23,9 @@
     ];
 
     let numeroSeleccionado = null;
-
+    
+    // nombre de la función, se escriben en camelCase
+    // Quisas dividir esta funcion en otros bloques
     function Juego() {
       const tableroDiv = document.getElementById('tablero');
       const numerosDiv = document.getElementById('numeros');
