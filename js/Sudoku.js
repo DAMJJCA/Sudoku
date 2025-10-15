@@ -23,7 +23,9 @@
     ];
 
     let numeroSeleccionado = null;
-
+    
+    // nombre de la función, se escriben en camelCase
+    // Quisas dividir esta funcion en otros bloques
     function Juego() {
       const tableroDiv = document.getElementById('tablero');
       const numerosDiv = document.getElementById('numeros');
@@ -34,7 +36,7 @@
       for (let n = 1; n <= 9; n++) {
         const numero = document.createElement('div');
         numero.classList.add('numero');
-        numero.dataset.value = String(n);
+        numero.dataset.value = String(n); // Interesante manera de parsear el número
         numero.innerText = n;
         numero.addEventListener('click', seleccionarNumero);
         numerosDiv.appendChild(numero);
