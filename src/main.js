@@ -1,36 +1,16 @@
-/* Datos del tablero (guárdalos como strings) */
-    const tablero = [
-      "--74916-5",
-      "2---6-3-9",
-      "-----7-1-",
-      "-586----4",
-      "--3----9-",
-      "--62--187",
-      "9-4-7---2",
-      "67-83----",
-      "81--45---"
-    ];
-    const solucion = [
-      "387491625",
-      "241568379",
-      "569327418",
-      "758619234",
-      "123784596",
-      "496253187",
-      "934176852",
-      "675832941",
-      "812945763"
-    ];
+  import { fetchPuzzle } from './services/puzzleService.js';
 
+  let tablero = [];
+  let solucion = [];
+  /* Datos del tablero (guárdalos como strings) */
+    
     let numeroSeleccionado = null;
-
-    function Juego() {
-      const tableroDiv = document.getElementById('tablero');
-      const numerosDiv = document.getElementById('numeros');
-      tableroDiv.innerHTML = '';
-      numerosDiv.innerHTML = '';
-
+    const tableroDiv = document.getElementById('tablero');
+    const numerosDiv = document.getElementById('numeros');
+   
+    function CrearBotones() {
       /* Crear botones 1..9 */
+      numerosDiv.innerHTML = '';
       for (let n = 1; n <= 9; n++) {
         const numero = document.createElement('div');
         numero.classList.add('numero');
@@ -39,8 +19,10 @@
         numero.addEventListener('click', seleccionarNumero);
         numerosDiv.appendChild(numero);
       }
-
+    }
+    function CrearCasillas() {
       /* Crear casillas 9x9 */
+       tableroDiv.innerHTML = '';
       for (let r = 0; r < 9; r++) {
         for (let c = 0; c < 9; c++) {
           const casilla = document.createElement('div');
@@ -85,4 +67,16 @@
       }
     }
 
-    document.addEventListener('DOMContentLoaded', Juego);
+    async function iniciarJuego() {
+      try {
+        const data= await fetchPuzzle();
+      tablero = data.tablero;
+      solucion = data.solucion;
+      CrearCasillas();
+      CrearBotones();
+      } catch (error) {
+        alert('Error al cargar el puzzle: ' + error.message);
+      }
+  }
+
+    window.onload = iniciarJuego;
