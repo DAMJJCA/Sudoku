@@ -1,0 +1,32 @@
+No hay que llamar a las carpetas de la arquitectura de nuestro proyecto en
+mayusculas Data, no sería una manera correcta y hay que denominarlo data.
+Idem con Public, public
+
+
+La estructura de nuestro proyecto tiene que ser:
+sudoku
+    |----> public
+    |       |
+    |       |--> css ---> style.css
+    |       |
+    |       |--> data --> puzzle.json
+    |       |
+    |       |--> index.html
+    |
+    |
+    |----> src
+            |
+            |--> services -->puzzleService.js
+            |
+            |--> main.js
+
+
+Error: No se pudo cargar el puzzle 404
+    at fetchPuzzle (puzzleService.js:4:22)    
+
+Por lo general, en proyectos con estructura /src, 
+la carpeta src no es accesible directamente desde el navegador
+Solucion: Movemos data a public 
+
+TODO:
+Revisa el tablero y como queda definido, no veo que se este generando bien
